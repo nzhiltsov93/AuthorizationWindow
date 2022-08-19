@@ -148,10 +148,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupView()
+        createGradient()
+        
         setupLabels()
         setupTextFields()
         setupButtons()
+        setupView()
         setupSocialMediaStackView()
         setupSingUpStackView()
     }
@@ -260,6 +262,22 @@ class ViewController: UIViewController {
             make.centerX.equalTo(view)
             make.bottom.equalTo(socialMediaStackView.snp.bottom).multipliedBy(1.1)
         }
+    }
+    
+    // MARK: - Gradient
+        
+    private func createGradient() {
+        let gradientBlue = UIColor(red: 155/255, green: 183/255, blue: 244/255, alpha: 1.0).cgColor
+        let gradientRed = UIColor(red: 183/255, green: 172/255, blue: 235/255, alpha: 1.0).cgColor
+            
+        let gradietLayer = CAGradientLayer()
+            
+        gradietLayer.frame = self.view.bounds
+        gradietLayer.colors = [gradientBlue, gradientRed, UIColor.white.cgColor]
+        gradietLayer.startPoint = CGPoint(x: 0.1, y: 0.1)
+        gradietLayer.endPoint = CGPoint(x: 0.1, y: 0.8)
+            
+        view.layer.insertSublayer(gradietLayer, at: 0)
     }
 
     
