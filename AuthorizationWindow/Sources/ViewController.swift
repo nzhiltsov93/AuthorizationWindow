@@ -6,13 +6,13 @@ class ViewController: UIViewController {
     // MARK: - Outlets
     
     private lazy var loginLabel: UILabel = {
-            let label = UILabel()
-            label.text = "Login"
-            label.textColor = .white
-            label.font = .boldSystemFont(ofSize: 35)
-            label.translatesAutoresizingMaskIntoConstraints = false
-            return label
-        }()
+        let label = UILabel()
+        label.text = "Login"
+        label.textColor = .white
+        label.font = .boldSystemFont(ofSize: 35)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
         
     private lazy var loginTextField: UITextField = {
         let textField = UITextField()
@@ -20,6 +20,8 @@ class ViewController: UIViewController {
         textField.font = .systemFont(ofSize: 14)
         textField.placeholder = "nzhiltsov"
         textField.layer.cornerRadius = 20
+        textField.setLeftIcon(UIImage(systemName: "person") ?? (UIImage(imageLiteralResourceName: "")))
+        textField.setRightIcon(UIImage(systemName: "checkmark.circle") ?? (UIImage(imageLiteralResourceName: "")))
         textField.textAlignment = .left
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
@@ -31,6 +33,7 @@ class ViewController: UIViewController {
         textField.font = .systemFont(ofSize: 14)
         textField.placeholder = "Password"
         textField.layer.cornerRadius = 20
+        textField.setLeftIcon(UIImage(systemName: "lock") ?? (UIImage(imageLiteralResourceName: "")))
         textField.textAlignment = .left
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
@@ -280,6 +283,28 @@ class ViewController: UIViewController {
         view.layer.insertSublayer(gradietLayer, at: 0)
     }
 
-    
 }
 
+extension UITextField {
+    func setLeftIcon(_ image: UIImage) {
+        let iconView = UIImageView(frame: CGRect(x: 25, y: 5, width: 22, height: 20))
+        iconView.image = image
+        iconView.tintColor = .systemGray
+        let iconContainerView: UIView = UIView(frame: CGRect(x: 20, y: 0, width: 60, height: 30))
+        iconContainerView.addSubview(iconView)
+        leftView = iconContainerView
+        leftViewMode = .always
+    }
+}
+
+extension UITextField {
+    func setRightIcon(_ image: UIImage) {
+        let iconView = UIImageView(frame: CGRect(x: -5, y: 5, width: 22, height: 20))
+        iconView.image = image
+        iconView.tintColor = .systemGreen
+        let iconContainerView: UIView = UIView(frame: CGRect(x: 20, y: 0, width: 30, height: 30))
+        iconContainerView.addSubview(iconView)
+        rightView = iconContainerView
+        rightViewMode = .always
+    }
+}
