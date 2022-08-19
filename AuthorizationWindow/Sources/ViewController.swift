@@ -143,11 +143,125 @@ class ViewController: UIViewController {
         return stackView
     }()
     
+    // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupView()
+        setupLabels()
+        setupTextFields()
+        setupButtons()
+        setupSocialMediaStackView()
+        setupSingUpStackView()
     }
 
+    // MARK: - Setup Outlets
+        
+    private func setupLabels() {
+        view.addSubview(loginLabel)
+        view.addSubview(connectWithLabel)
+        
+        loginLabel.snp.makeConstraints{ make in
+            make.centerX.equalTo(view)
+            make.top.equalTo(view.snp.centerY).multipliedBy(0.2)
+        }
+            
+        connectWithLabel.snp.makeConstraints{ make in
+            make.centerX.equalTo(view)
+            make.bottom.equalTo(view.snp.bottom).multipliedBy(0.75)
+        }
+    }
+        
+    private func setupTextFields() {
+        view.addSubview(loginTextField)
+        view.addSubview(passwordTextField)
+            
+        loginTextField.snp.makeConstraints{ make in
+            make.centerX.equalTo(view)
+            make.top.equalTo(loginLabel.snp.centerY).multipliedBy(1.5)
+            make.width.equalTo(view.snp.width).multipliedBy(0.75)
+            make.height.equalTo(45)
+        }
+            
+        passwordTextField.snp.makeConstraints{ make in
+            make.centerX.equalTo(view)
+            make.top.equalTo(loginTextField.snp.centerY).multipliedBy(1.25)
+            make.width.equalTo(view.snp.width).multipliedBy(0.75)
+            make.height.equalTo(45)
+        }
+    }
+        
+    private func setupButtons() {
+        view.addSubview(loginButton)
+        view.addSubview(forgotPasswordButton)
+        
+        loginButton.snp.makeConstraints{ make in
+            make.centerX.equalTo(view)
+            make.top.equalTo(passwordTextField.snp.centerY).multipliedBy(1.4)
+            make.width.equalTo(view.snp.width).multipliedBy(0.75)
+            make.height.equalTo(45)
+        }
+            
+        forgotPasswordButton.snp.makeConstraints{ make in
+            make.centerX.equalTo(view)
+            make.top.equalTo(loginButton.snp.centerY).multipliedBy(1.1)
+        }
+    }
+        
+    private func setupView() {
+        view.addSubview(streakLeftView)
+        view.addSubview(streakRightView)
+            
+        streakLeftView.snp.makeConstraints{ make in
+            make.centerY.equalTo(connectWithLabel)
+            make.right.equalTo(connectWithLabel.snp.left).multipliedBy(0.9)
+            make.width.equalTo(view.snp.width).multipliedBy(0.2)
+            make.height.equalTo(1)
+        }
+            
+        streakRightView.snp.makeConstraints{ make in
+            make.centerY.equalTo(connectWithLabel)
+            make.left.equalTo(connectWithLabel.snp.right).multipliedBy(1.05)
+            make.width.equalTo(view.snp.width).multipliedBy(0.2)
+            make.height.equalTo(1)
+        }
+    }
+        
+    private func setupSocialMediaStackView() {
+        view.addSubview(socialMediaStackView)
+        
+        socialMediaStackView.addArrangedSubview(facebookButton)
+        socialMediaStackView.addArrangedSubview(twitterButton)
+        
+        facebookButton.snp.makeConstraints{ make in
+            make.width.equalTo(view.snp.width).multipliedBy(0.45)
+            make.height.equalTo(45)
+        }
+            
+        twitterButton.snp.makeConstraints{ make in
+            make.width.equalTo(view.snp.width).multipliedBy(0.45)
+            make.height.equalTo(45)
+        }
+            
+        socialMediaStackView.snp.makeConstraints{ make in
+            make.centerX.equalTo(view)
+            make.bottom.equalTo(connectWithLabel.snp.bottom).multipliedBy(1.13)
+        }
+    }
+        
+    private func setupSingUpStackView() {
+        view.addSubview(authorizationStackView)
+        
+        authorizationStackView.addArrangedSubview(existAccount)
+        authorizationStackView.addArrangedSubview(signUpButton)
+            
+        authorizationStackView.snp.makeConstraints{ make in
+            make.centerX.equalTo(view)
+            make.bottom.equalTo(socialMediaStackView.snp.bottom).multipliedBy(1.1)
+        }
+    }
 
+    
 }
 
