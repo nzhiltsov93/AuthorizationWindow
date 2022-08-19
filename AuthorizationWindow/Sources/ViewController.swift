@@ -9,7 +9,7 @@ class ViewController: UIViewController {
         let label = UILabel()
         label.text = "Login"
         label.textColor = .white
-        label.font = .boldSystemFont(ofSize: 35)
+        label.font = .boldSystemFont(ofSize: 30)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -60,7 +60,7 @@ class ViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setTitle("Forgot your password?", for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = .boldSystemFont(ofSize: 14)
+        button.titleLabel?.font = .boldSystemFont(ofSize: 12)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -169,7 +169,7 @@ class ViewController: UIViewController {
         
         loginLabel.snp.makeConstraints{ make in
             make.centerX.equalTo(view)
-            make.top.equalTo(view.snp.centerY).multipliedBy(0.2)
+            make.top.equalTo(view.snp.centerY).multipliedBy(0.25)
         }
             
         connectWithLabel.snp.makeConstraints{ make in
@@ -191,7 +191,7 @@ class ViewController: UIViewController {
             
         passwordTextField.snp.makeConstraints{ make in
             make.centerX.equalTo(view)
-            make.top.equalTo(loginTextField.snp.centerY).multipliedBy(1.25)
+            make.top.equalTo(loginTextField.snp.centerY).multipliedBy(1.2)
             make.width.equalTo(view.snp.width).multipliedBy(0.75)
             make.height.equalTo(45)
         }
@@ -203,7 +203,7 @@ class ViewController: UIViewController {
         
         loginButton.snp.makeConstraints{ make in
             make.centerX.equalTo(view)
-            make.top.equalTo(passwordTextField.snp.centerY).multipliedBy(1.4)
+            make.top.equalTo(passwordTextField.snp.centerY).multipliedBy(1.3)
             make.width.equalTo(view.snp.width).multipliedBy(0.75)
             make.height.equalTo(45)
         }
